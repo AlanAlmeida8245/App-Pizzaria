@@ -14,6 +14,7 @@ const cors = require("cors")
 const fs = require("fs")
 const { JSDOM } = require("jsdom");
 const myJSDom = new JSDOM
+const cookie = require("cookie-session")
 const $ = require('jquery')(myJSDom.window);
 const passport = require("passport")
 require("./config/auth")(passport)
@@ -43,7 +44,7 @@ require("./config/auth")(passport)
         app.use(express.static(path.join(__dirname, "public")))
         app.use("/uploads", express.static("uploads"))
 
-        app.use(session({
+        app.use(cookie({
             secret: "cardapio",
             resave: true,
             saveUninitialized: true
