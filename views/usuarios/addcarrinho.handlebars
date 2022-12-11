@@ -1,0 +1,53 @@
+
+<style>
+    img{
+        width: 80px;
+        border-radius: 50%;
+    }
+    .form-control{
+        width: 100px;
+    }
+    .inputqntd{
+        border-radius: 10px;
+        text-align: center;
+    }
+    body{
+         background-color: rgb(20, 20, 20);
+    }
+    .campo{
+        border-radius: 10px;
+    }
+</style>
+
+
+
+<form action="/clientes/addcart" method="post">
+
+    <input type="hidden" name="name", id="name", value="{{name}}">
+    <input type="hidden" name="price", id="price", value="{{price}}">
+    <input type="hidden" name="img", id="img", value="{{img}}">
+      <input type="hidden" name="categoria", id="categoria", value="{{categoria}}">
+   <div class="card text-center">
+  <div class="card-header">
+    Adicionar
+  </div>
+  <div class="card-body">
+    <img src="http://localhost:8082/{{img}}" alt="">
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{description}}</p>
+    <label for="quantidade">Quantidade:</label>
+    <input type="number", min="1" max="10", id="quantidade", name="quantidade" class="inputqntd" required>
+    <div class="mt-4"><label for="campo"><strong>Observação</strong>:</label></div>
+    <div>
+        <textarea name="campo" id="campo" cols="50" rows="5" placeholder="Ex: Por Favor diminuir a cobertura" class="campo"></textarea>
+    </div>
+   <button class="btn btn-primary mt-4">Confirmar</button>
+  
+  </div>
+ </div> 
+</form>
+
+ <a href="/"><button class="btn btn-danger mt-4">Voltar</button></a>
+
+
+

@@ -1,0 +1,57 @@
+
+<style>
+    img{
+        width: 80px;
+        border-radius: 50%;
+    }
+    .form-control{
+        width: 100px;
+    }
+    .inputqntd{
+        border-radius: 10px;
+        text-align: center;
+    }
+    body{
+         background-color: rgb(20, 20, 20);
+    }
+    .campo{
+        border-radius: 10px;
+    }
+</style>
+
+
+
+<form action="/clientes/carrinho/editado" method="post">
+
+    <input type="hidden" name="name", id="name", value="{{name}}">
+    <input type="hidden" name="price", id="price", value="{{price}}">
+    <input type="hidden" name="img", id="img", value="{{img}}">
+
+      <input type="hidden" name="categoria", id="categoria", value="{{categoria}}">
+   <div class="card text-center">
+  <div class="card-header">
+    Editar
+  </div>
+  <div class="card-body">
+    <img src="http://localhost:8082/{{produto.img}}" alt="">
+    <h5 class="card-title">{{produto.produto}}</h5>
+    <p class="card-text">{{description}}</p>
+          <input type="hidden" name="id", id="id", value="{{produto._id}}">
+    <label for="quantidade">Quantidade:</label>
+    <input type="number", min="1" max="10", id="quantidade", name="quantidade" class="inputqntd" value="{{produto.quantidade}}" required>
+    <div class="mt-4"><label for="campo"><strong>Observação</strong>:</label></div>
+    <div>
+        <textarea name="campo" id="campo" cols="50" rows="5" placeholder="Ex: Por Favor diminuir a cobertura" class="campo">{{produto.observacao}}</textarea>
+    </div>
+   <button class="btn btn-primary mt-4">Confirmar</button>
+   </form>
+   <a href="clientes/carrinho"><button class="btn btn-danger mt-4">Voltar</button></a>
+  </div>
+ </div>
+
+
+
+
+
+
+

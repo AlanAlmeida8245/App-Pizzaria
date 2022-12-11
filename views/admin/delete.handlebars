@@ -1,0 +1,327 @@
+
+<style>
+body{
+     background-color: rgb(20, 20, 20);
+}
+
+.card-container{
+    display: flex;
+    max-width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+   
+}
+.card-container2{
+    padding: 30px;
+    display: flex;
+    max-width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+   
+}
+h1{
+    color: red;
+}
+.card-body > img{
+        width: 50px;
+        border-radius: 50%;
+    }
+    .productname{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    card-body, card{
+        max-width: 50em;
+    }
+    svg{
+      background-color: crimson;
+      border-radius: 5px;
+      height: 34px;
+      width: 34px;
+    }
+    #icone{
+      background-color: lightgreen;
+      padding: 5px;
+      width: 34px;
+    }
+    svg:hover{
+      cursor: pointer;
+      background-color: rgb(255, 0, 0);
+    }
+    #icone:hover{
+      background-color: rgb(124, 204, 124);
+    }
+
+
+</style>
+
+{{#each erros}}
+
+  <div class="alert alert-danger" id="opa">{{texto}}</div>
+  <br>
+
+{{/each}}
+
+<div class="card-container">
+    
+    <div class="card" style="width: 18rem;">
+      <img src="../../uploads/products/1668446881863-bolo.jpg" width="5px" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h2 class="card-text">Sobremesas</h2>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#sobremesaModel">
+        Ver Itens
+        </button>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="../../uploads/products/HAMBURGUER_DIVULGAÇÃO.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+         <h2 class="card-text">Fast-Foods</h2>
+          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#lanchesModel">
+        Ver Itens
+        </button>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="../../uploads/products/Sazerac-Drink-600x400.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+     <h2 class="card-text">Bebidas</h2>
+     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#bebidasModel">
+        Ver Itens
+        </button>
+      </div>
+    </div>
+</div>
+
+
+     <card class="card-container2">
+         <div class="card" style="width: 18rem;">
+          <img src="../../uploads/products/almoco.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+             <h2 class="card-text">Almoços</h2>
+             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#almocoModel">
+            Ver Itens
+             </button>
+
+          </div>
+             </div>
+         <div class="card" style="width: 18rem;">
+          <img src="../../uploads/products/queijo_min_dab-3825198.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+             <h2 class="card-text">Tira-Gostos</h2>
+             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#tiragostoModel">
+                 Ver Itens
+            </button>
+          </div>
+             </div>
+         </div>
+     </card>
+
+
+<!-- Modal -->
+<div class="modal fade" id="sobremesaModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Sobremesas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#each sobremesa}}
+            <div class="card mt-4">
+            <div class="card-body">
+                    <img src="../../{{img}}" alt="sas">
+                        <input type="hidden" name="_id" id="_id" value="{{_id}}">
+                        <span class="productname">{{name}}</span>
+                        |
+                        <span>Descrição : <span class="unidades">{{description}}</span></span>
+                        <div><span >Valor: <span class="total">R$: {{price}} </span></span></div>
+                        <br>
+                        <a href="/admin/editar/sobremesa/{{_id}}">
+                          <abbr title="Editar">
+                              <svg id="icone" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16L437.8 14.06c-18.75-18.75-49.19-18.75-67.93 0l-56.53 56.55l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM290.8 93.23l-259.7 259.7c-2.234 2.234-3.755 5.078-4.376 8.176l-26.34 131.7C-1.921 504 7.95 513.9 19.15 511.7l131.7-26.34c3.098-.6191 5.941-2.141 8.175-4.373l259.7-259.7L290.8 93.23z"/></svg>
+                              </abbr>
+                        </a>
+
+                            <a href="/admin/deletar/sobremesa/{{_id}}">
+                              <abbr title="Deletar">
+                                <svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4v-24h-24v24zm26-30h-7l-2-2h-10l-2 2h-7v4h28v-4z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
+                              </abbr>
+                            </a>
+            </div>
+            </div>
+         {{/each}}   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="lanchesModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Lanches</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#each fastfood}}
+            <div class="card mt-4">
+            <div class="card-body">
+                    <img src="../../{{img}}" alt="sas">
+                        <input type="hidden" name="_id" id="_id" value="{{_id}}">
+                        <span class="productname">{{name}}</span>
+                        |
+                        <span>Descrição : <span class="unidades">{{description}}</span></span>
+                        <div><span >Valor: <span class="total">R$: {{price}} </span></span></div>
+                        <br>
+                        <a href="/admin/editar/fastfood/{{_id}}">
+                          <abbr title="Editar">
+                              <svg id="icone" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16L437.8 14.06c-18.75-18.75-49.19-18.75-67.93 0l-56.53 56.55l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM290.8 93.23l-259.7 259.7c-2.234 2.234-3.755 5.078-4.376 8.176l-26.34 131.7C-1.921 504 7.95 513.9 19.15 511.7l131.7-26.34c3.098-.6191 5.941-2.141 8.175-4.373l259.7-259.7L290.8 93.23z"/></svg>
+                              </abbr>
+                        </a>
+
+                            <a href="/admin/deletar/fastfood/{{_id}}">
+                              <abbr title="Deletar">
+                                <svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4v-24h-24v24zm26-30h-7l-2-2h-10l-2 2h-7v4h28v-4z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
+                              </abbr>
+                            </a>
+            </div>
+            </div>
+         {{/each}}   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="bebidasModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Bebidas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#each bebidas}}
+            <div class="card mt-4">
+            <div class="card-body">
+                    <img src="../../{{img}}" alt="sas">
+                        <input type="hidden" name="_id" id="_id" value="{{_id}}">
+                        <span class="productname">{{name}}</span>
+                        |
+                        <span>Descrição : <span class="unidades">{{description}}</span></span>
+                        <div><span >Valor: <span class="total">R$: {{price}} </span></span></div>
+                        <br>
+                        <a href="/admin/editar/bebidas/{{_id}}">
+                          <abbr title="Editar">
+                              <svg id="icone" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16L437.8 14.06c-18.75-18.75-49.19-18.75-67.93 0l-56.53 56.55l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM290.8 93.23l-259.7 259.7c-2.234 2.234-3.755 5.078-4.376 8.176l-26.34 131.7C-1.921 504 7.95 513.9 19.15 511.7l131.7-26.34c3.098-.6191 5.941-2.141 8.175-4.373l259.7-259.7L290.8 93.23z"/></svg>
+                              </abbr>
+                        </a>
+
+                            <a href="/admin/deletar/bebidas/{{_id}}">
+                              <abbr title="Deletar">
+                                <svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4v-24h-24v24zm26-30h-7l-2-2h-10l-2 2h-7v4h28v-4z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
+                              </abbr>
+                            </a>
+            </div>
+            </div>
+         {{/each}}   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="almocoModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Almoços</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#each almoco}}
+            <div class="card mt-4">
+            <div class="card-body">
+                    <img src="../../{{img}}" alt="sas">
+                        <input type="hidden" name="_id" id="_id" value="{{_id}}">
+                        <span class="productname">{{name}}</span>
+                        |
+                        <span>Descrição : <span class="unidades">{{description}}</span></span>
+                        <div><span >Valor: <span class="total">R$: {{price}} </span></span></div>
+                        <br>
+                        <a href="/admin/editar/almoco/{{_id}}">
+                          <abbr title="Editar">
+                              <svg id="icone" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16L437.8 14.06c-18.75-18.75-49.19-18.75-67.93 0l-56.53 56.55l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM290.8 93.23l-259.7 259.7c-2.234 2.234-3.755 5.078-4.376 8.176l-26.34 131.7C-1.921 504 7.95 513.9 19.15 511.7l131.7-26.34c3.098-.6191 5.941-2.141 8.175-4.373l259.7-259.7L290.8 93.23z"/></svg>
+                              </abbr>
+                        </a>
+
+                            <a href="/admin/deletar/almoco/{{_id}}">
+                              <abbr title="Deletar">
+                                <svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4v-24h-24v24zm26-30h-7l-2-2h-10l-2 2h-7v4h28v-4z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
+                              </abbr>
+                            </a>
+            </div>
+            </div>
+         {{/each}}   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tiragostoModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tira-Gostos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#each tiragosto}}
+            <div class="card mt-4">
+            <div class="card-body">
+                    <img src="../../{{img}}" alt="sas">
+                        <input type="hidden" name="_id" id="_id" value="{{_id}}">
+                        <span class="productname">{{name}}</span>
+                        |
+                        <span>Descrição : <span class="unidades">{{description}}</span></span>
+                        <div><span >Valor: <span class="total">R$: {{price}} </span></span></div>
+                        <br>
+                        <a href="/admin/editar/tiragosto/{{_id}}">
+                          <abbr title="Editar">
+                              <svg id="icone" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16L437.8 14.06c-18.75-18.75-49.19-18.75-67.93 0l-56.53 56.55l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM290.8 93.23l-259.7 259.7c-2.234 2.234-3.755 5.078-4.376 8.176l-26.34 131.7C-1.921 504 7.95 513.9 19.15 511.7l131.7-26.34c3.098-.6191 5.941-2.141 8.175-4.373l259.7-259.7L290.8 93.23z"/></svg>
+                              </abbr>
+                        </a>
+
+                            
+                                <a href="/admin/deletar/tiragosto/{{_id}}">
+                                  <abbr title="Deletar">
+                                    <svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4v-24h-24v24zm26-30h-7l-2-2h-10l-2 2h-7v4h28v-4z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
+                                  </abbr>
+                                </a>
+                            
+            </div>
+            </div>
+         {{/each}}   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+

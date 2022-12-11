@@ -1,0 +1,178 @@
+
+<style>
+    .card{
+        width: 700px;
+        height: 50rem;
+        display: flex;
+        margin: 12px;
+
+    }
+   
+    body{
+        background-color: rgb(20, 20, 20);
+    }
+    img{
+        border-radius: 50%;
+        justify-content: center;
+       
+    }
+    .img-card{
+       margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+       
+    }
+    .card{
+        border-radius: 10px;
+    }
+    #icone{
+        width: 20px;
+    }
+    #editDiv{
+        padding: 10px;
+    }
+    button{
+        margin-left: 40px;
+    }
+    @media (max-width: 712px) { 
+        
+       .card{
+            max-width: 500px;
+       }
+    }  
+    @media (max-width: 391px) { 
+        
+       .card{
+            max-width: 300px;
+       }
+    }    
+  
+</style>
+
+<div class="d-flex p-2 bd-highlight mb-3" style="justify-content: center;">
+
+    <div class="p-2 bd-highlight" id="Div">
+        <div class="card">
+        <div class="img-card">
+            <div><img src="../../{{usuario.img}}" alt="..." style="width: 180px; justify-content: center;"></div>
+                  <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#fotoModel">Alterar Foto</button>
+        </div>
+        <div class="card-body">
+            <h1 class="card-text" id="titulo-nome"style="text-align: center;">{{usuario.name}}</h1>
+                        <div style="text-align: center;" class="mt-4">{{usuario.description}}</div>
+                    
+                <div class="card mt-4" style="width: 200px; height: 80px">
+                    <div class="card-body" style="background-color: salmon;">
+                        <strong>Nome:</strong> {{usuario.name}}
+                    </div>
+                </div>
+                <div class="card" style="width: 200px; height: 80px">
+                    <div class="card-body" style="background-color: lightgreen;">
+                        <strong>Email:</strong> {{usuario.email}}
+                    </div>
+                </div>
+                 <div class="card" style="width: 200px; height: 80px">
+                    <div class="card-body" style="background-color: lightblue;">
+                        <strong>Data de Nascimento:</strong> {{Data}}
+                    </div>
+                </div>
+              
+            
+            <button onclick="clicou()" class="btn btn-primary mt-5"><svg id="icone" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16L437.8 14.06c-18.75-18.75-49.19-18.75-67.93 0l-56.53 56.55l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM290.8 93.23l-259.7 259.7c-2.234 2.234-3.755 5.078-4.376 8.176l-26.34 131.7C-1.921 504 7.95 513.9 19.15 511.7l131.7-26.34c3.098-.6191 5.941-2.141 8.175-4.373l259.7-259.7L290.8 93.23z"/></svg> Editar</button>
+        </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- DIV que mostrará após clicar no botão editar: -->
+<div class="d-flex p-2 bd-highlight mb-3" style="justify-content: center;" >
+
+    <div class="p-2 bd-highlight" id="editDiv">
+        <div class="card">
+        <div class="img-card">
+           
+                 <img src="http://localhost:8082/{{usuario.img}}" alt="..." style="width: 180px; justify-content: center;">
+           
+            <form action="/clientes/editar/{{usuario._id}}" method="POST">
+            </div>
+            <div class="card-body">
+                <h1 class="card-text" id="titulo-nome"style="text-align: center;">{{usuario.name}}</h1>
+                            <textarea name="description" id="description" cols="70" rows="3" class="form-control">{{usuario.description}}</textarea required>
+                        
+                    <div class="card mt-4" style="width: 200px; height: 80px">
+                        <div class="card-body" style="background-color: salmon;">
+                            <strong>Nome: </strong>
+                            <input type="text" value="{{usuario.name}}" required class="form-control" name="name" id="name" >
+                        </div>
+                    </div>
+                    <div class="card" style="width: 200px; height: 80px">
+                        <div class="card-body" style="background-color: lightgreen;">
+                            <strong>Email: </strong>
+                            <input type="text" value="{{usuario.email}}" class="form-control" name="email" id="email" required>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 200px; height: 80px">
+                        <div class="card-body" style="background-color: lightblue;">
+                            <strong>Data de Nascimento:</strong> 
+                            <input type="date" name="data" id="data" required class="form-control">
+                    </div>
+            
+                </div>
+              <br><br>
+            <button class="btn btn-primary mt-3"> Salvar</button>
+           </form> 
+        </div>
+        </form>  
+        </div>
+    </div>
+
+
+        <!-- Modal -->
+<form action="/clientes/editarfoto/{{usuario._id}}" method="post" enctype="multipart/form-data">
+    <div class="modal fade" id="fotoModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Upload de Foto</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                <input type="file" name="image" id="image" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-warning">Salvar Foto</button>
+</form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+     
+
+</div>
+
+
+
+
+<script>
+
+    let editCard = document.getElementById("editDiv")
+    editCard.style.display = "none";
+
+    function clicou(){
+             console.log("teste2")
+            let Div = document.getElementById("Div")
+            Div.style.display = "none"
+            editCard.style.display = "block";
+    };
+
+    
+
+</script>

@@ -1,0 +1,159 @@
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    svg{
+      background-color: crimson;
+      border-radius: 5px;
+      height: 34px;
+      width: 34px;
+    }
+    #icone{
+      background-color: lightgreen;
+      padding: 5px;
+      width: 34px;
+    }
+    svg:hover{
+      cursor: pointer;
+      background-color: rgb(255, 0, 0);
+    }
+    #icone:hover{
+      background-color: rgb(124, 204, 124);
+    }
+     .user{
+      background-color: orange;
+      padding: 5px;
+      width: 34px;
+    }
+    .user:hover{
+        background-color: rgb(224, 147, 4);
+    }
+    .col:hover{
+        transform: scale(0.9);
+        transition: 1s;
+       
+    }
+    .col{
+        transform: scale(1);
+        transition: 2s;
+    }
+    img{
+        border-radius: 50%;
+        width: 80px;
+    }
+    #custom-cards{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    a, a:hover{
+        text-decoration: none;
+        color: white;
+    }
+    
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="features.css" rel="stylesheet">
+
+   
+
+  <div class="container px-4 py-5" id="custom-cards">
+    {{#if user}}
+   
+    <h2 class="pb-2 border-bottom"> Olá, <img src="../../{{user.img}}" alt="profile"> {{user.name}}  </h2>
+    </div>
+    {{/if}}
+    <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
+      <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');" >
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <a href="/admin/deletar">
+                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Deletar /<br> Editar Produto</h3>
+            </a>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <abbr title="Deletar">
+                              <svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4v-24h-24v24zm26-30h-7l-2-2h-10l-2 2h-7v4h28v-4z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
+             </abbr>
+             <abbr title="Editar">
+                            <svg id="icone" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16L437.8 14.06c-18.75-18.75-49.19-18.75-67.93 0l-56.53 56.55l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM290.8 93.23l-259.7 259.7c-2.234 2.234-3.755 5.078-4.376 8.176l-26.34 131.7C-1.921 504 7.95 513.9 19.15 511.7l131.7-26.34c3.098-.6191 5.941-2.141 8.175-4.373l259.7-259.7L290.8 93.23z"/></svg>
+                            </abbr>
+              </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+            <a href="/admin/usuarios">
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"> Usuarios Cadastrados</h3>
+            </a>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+              <abbr title="Usuarios">
+                           <svg class="user"viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="user people person users man" id="user_people_person_users_man"><path d="M23.74,16.18a1,1,0,1,0-1.41,1.42A9,9,0,0,1,25,24c0,1.22-3.51,3-9,3s-9-1.78-9-3a9,9,0,0,1,2.63-6.37,1,1,0,0,0,0-1.41,1,1,0,0,0-1.41,0A10.92,10.92,0,0,0,5,24c0,3.25,5.67,5,11,5s11-1.75,11-5A10.94,10.94,0,0,0,23.74,16.18Z"/><path d="M16,17a7,7,0,1,0-7-7A7,7,0,0,0,16,17ZM16,5a5,5,0,1,1-5,5A5,5,0,0,1,16,5Z"/></g></svg>
+             </abbr>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,75 @@
+
+
+<style>
+    img{
+        width: 50px;
+        border-radius: 50%;
+    }
+    .productname{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    card-body, card{
+        max-width: 50em;
+    }
+    body{
+         background-color: rgb(20, 20, 20);
+    }
+    .unidades{
+     
+        
+        padding: 5px;
+        background-color: salmon;
+        border-radius: 10px;
+        
+    }
+    .total{
+        padding: 5px;
+        background-color: lightgreen;
+        border-radius: 10px;
+    }
+    .jumbotron-heading{
+        color: orange;
+    }
+</style>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading mt-4" >Confirmar Pedido </h1>
+        <p class="lead text-muted">Seu pedido ficou assim: </p>
+    </div>
+</section>
+
+
+<div class="card mt-4">
+  <div class="card-body">
+        <img src="../../{{img}}" alt="sas">
+            <input type="hidden" name="_id" id="_id" value="{{_id}}">
+            <span class="productname">{{nome}}</span>
+            |
+            <span>Quantidade : <span class="unidades">{{quantidade}}</span></span>
+            <span >Valor Total: <span class="total">R$: {{preco}} </span></span>
+            {{#if observacao}}
+            <div ><strong class="btn btn-warning mt-2">Observação:</strong>  </div>
+            <div>{{observacao}} </div>
+            {{else}}
+        {{/if}}
+        
+  </div>
+</div>
+
+{{#if user}}
+    <div class="mt-4">
+                <form action="/clientes/comprado" method="post">
+                    <input type="hidden" name="nome" id="nome" value="{{nome}}">
+                    <input type="hidden" name="quantidade" id="quantidade" value="{{quantidade}}">
+                        <input type="hidden" name="categoria" id="categoria" value="{{categoria}}">
+                    <input type="hidden" name="preco" id="preco" value="{{preco}}">
+                    <input type="hidden" name="img" id="img" value="{{img}}">
+                    <input type="hidden" name="observacao" id="observacao" value="{{observacao}}">
+                     <input type="hidden" name="user" id="user" value="{{user._id}}">
+                    <a href="/clientes/comprado"><button class="btn btn-success">Adicionar</button></a>
+                    |
+                    <button class="btn btn-danger">Voltar</button>
+                     </div>
+                </form>
+{{/if}}

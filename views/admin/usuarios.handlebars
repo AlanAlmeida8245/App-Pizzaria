@@ -1,0 +1,51 @@
+
+
+
+<style>
+    img{
+        width: 200px;
+        border-radius: 50%;
+        border: solid orange 5px;
+        margin: 10px;
+
+        
+    }
+    .d-flex{
+        flex-wrap: wrap;
+
+    }
+    .teste{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .row{
+        padding: 10px;
+        display: flex;
+    }
+    body{
+            background-color: rgb(20, 20, 20);
+    }
+    p{
+        font-weight: bold;   
+    }
+</style>
+
+
+
+
+<div class="d-flex p-2 bd-highlight mb-3" style="justify-content: center;">
+    {{#each usuario}}
+    <div class="p-2 bd-highlight">
+        <div class="card">
+        <img src="../../{{img}}" alt="...">
+        <div class="card-body">
+            <p class="card-text" style="text-align: center;">{{name}}</p>
+        </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+
+
