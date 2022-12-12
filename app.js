@@ -18,6 +18,7 @@ const cookie = require("cookie-session")
 const $ = require('jquery')(myJSDom.window);
 const passport = require("passport")
 const db = require("./config/db")
+const MongoStore = require('connect-mongo');
 require("./config/auth")(passport)
 
 
@@ -54,7 +55,10 @@ require("./config/auth")(passport)
             secure: true,
             maxAge:60000
                },
-        store: new RedisStore(),
+               store: MongoStore.create({
+                mongoUrl: 'mongodb+srv://AlanAlmeida8245:82450225@blogapp.wqa7kil.mongodb.net/?retryWrites=true&w=majority',
+                mongoOptions: advancedOptions // See below for details
+              }),
         secret: 'cardapio',
         saveUninitialized: true,
         resave: false
