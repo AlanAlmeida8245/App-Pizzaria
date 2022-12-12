@@ -131,11 +131,20 @@ router.get("/login", (req, res) => {
 })
 
 router.post("/login", (req, res, next) => {
-    passport.authenticate("local", {
-        successRedirect: "/",
-        failureRedirect: "/clientes/login", 
-        failureFlash: true
-    })(req, res, next)
+
+    Contas.findOne({email: req.body.email}).lean().then((usuario) => {
+        if(usuario)
+        {
+            passport.authenticate("local", {
+                successRedirect: "/",
+                failureRedirect: "/clientes/login", 
+                failureFlash: true
+            })(req, res, next)
+        }
+        else{
+            req.flash("error_msg", "Este Usuario não existe, verifique o email")
+        }
+    })
     
 })
 
