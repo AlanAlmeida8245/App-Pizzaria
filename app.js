@@ -55,10 +55,7 @@ require("./config/auth")(passport)
             secure: true,
             maxAge:60000
                },
-               store: MongoStore.create({
-                mongoUrl: 'mongodb+srv://AlanAlmeida8245:82450225@blogapp.wqa7kil.mongodb.net/?retryWrites=true&w=majority',
-                mongoOptions: advancedOptions // See below for details
-              }),
+               store: MongoStore.create({mongoUrl: 'mongodb+srv://AlanAlmeida8245:82450225@blogapp.wqa7kil.mongodb.net/?retryWrites=true&w=majority'}),
         secret: 'cardapio',
         saveUninitialized: true,
         resave: false
