@@ -47,12 +47,26 @@ require("./config/auth")(passport)
         app.use(express.static(path.join(__dirname, "public")))
         app.use("/uploads", express.static("uploads"))
 
+        app.set('trust proxy', 1);
+
         app.use(session({
-            secret: "cardapio",
-            resave: true,
-            saveUninitialized: true,
-            cookie: { secure: true }
-        }))
+        cookie:{
+            secure: true,
+            maxAge:60000
+               },
+        store: new RedisStore(),
+        secret: 'cardapio',
+        saveUninitialized: true,
+        resave: false
+        }));
+        
+        app.use(function(req,res,next){
+        if(!req.session){
+            return next(new Error('Oh no')) //handle error
+        }
+        next() //otherwise continue
+        });
+
         app.use(passport.initialize())
         app.use(passport.session())
          app.use(flash())
