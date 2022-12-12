@@ -17,14 +17,16 @@ const myJSDom = new JSDOM
 const cookie = require("cookie-session")
 const $ = require('jquery')(myJSDom.window);
 const passport = require("passport")
+const db = require("./config/db")
 require("./config/auth")(passport)
+
 
 
 
 
     //se conectando ao banco de dados
     mongoose.Promisse = global.Promisse;
-    mongoose.connect("mongodb://localhost/projeto").then((req, res) => {
+    mongoose.connect("mongodb+srv://AlanAlmeida8245:82450225@blogapp.wqa7kil.mongodb.net/?retryWrites=true&w=majority").then((req, res) => {
         console.log("Conectado ao Banco de Dados")
         }).catch((error) => {
         console.log("Erro ao se conectar ao banco de dados: " + error)
@@ -40,6 +42,7 @@ require("./config/auth")(passport)
    
     
     //Configurações
+    app.use(cors());
         //public
         app.use(express.static(path.join(__dirname, "public")))
         app.use("/uploads", express.static("uploads"))
@@ -72,7 +75,7 @@ require("./config/auth")(passport)
             //bodyParser
             
            app.use(bodyParser.urlencoded({extended: true}))
-           app.use(cors());
+
            app.use(bodyParser.json())
            //Handlebars
             app.engine('handlebars', handlebars.engine({
