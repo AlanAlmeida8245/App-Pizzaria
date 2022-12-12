@@ -142,8 +142,8 @@ router.post("/login", (req, res, next) => {
             })(req, res, next)
         }
         else{
-            res.redirect("/clientes/login")
             req.flash("error_msg", "Este Usuario não existe, verifique o email")
+            res.redirect("/clientes/login")
         }
     })
     
