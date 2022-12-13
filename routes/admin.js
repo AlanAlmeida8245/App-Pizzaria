@@ -325,7 +325,7 @@ const fileFilter  = (req, file, callback) => {
 
     
 
-    router.post("/edit/sobremesa", isAdmin, uploadProducts.single('image'), (req, res) => {
+    router.post("/edit/sobremesa", isAdmin, (req, res) => {
 
         let erros = []
     
@@ -366,7 +366,7 @@ const fileFilter  = (req, file, callback) => {
 
     })
 
-    router.post("/edit/fastfood", isAdmin, uploadProducts.single('image'), (req, res) => {
+    router.post("/edit/fastfood", isAdmin,  (req, res) => {
 
         let erros = []
     
@@ -407,7 +407,7 @@ const fileFilter  = (req, file, callback) => {
 
     })
 
-    router.post("/edit/bebidas", isAdmin, uploadProducts.single('image'), (req, res) => {
+    router.post("/edit/bebidas", isAdmin,  (req, res) => {
 
         let erros = []
     
@@ -448,7 +448,7 @@ const fileFilter  = (req, file, callback) => {
 
     })
 
-    router.post("/edit/almoco", isAdmin, uploadProducts.single('image'), (req, res) => {
+    router.post("/edit/almoco", isAdmin, (req, res) => {
 
         let erros = []
     
@@ -489,7 +489,7 @@ const fileFilter  = (req, file, callback) => {
 
     })
 
-    router.post("/edit/tiragosto", isAdmin, uploadProducts.single('image'), (req, res) => {
+    router.post("/edit/tiragosto", isAdmin,  (req, res) => {
 
         let erros = []
     
