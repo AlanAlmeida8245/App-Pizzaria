@@ -20,18 +20,10 @@ const fs = require("fs")
 const {isAdmin} = require("../helpers/isAdmin")
 
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, "./uploads/products/")
-        
-    },
-    filename: function(req, file, cb){
-        let data =  Date.now().toString().replace(/:/g, '-') + '-';
-        cb(null, data + file.originalname);
-       
-    }
+const Multer = multer({
+    storage: multer.memoryStorage(),
+    limits: 1024 * 1024
 })
-const uploadProducts = multer({ storage })
 
 const fileFilter  = (req, file, callback) => {
 
@@ -49,7 +41,7 @@ const fileFilter  = (req, file, callback) => {
         res.render("admin/addsnack")
     })
 
-    router.post("/novolanche", isAdmin, uploadProducts.single('image'), (req, res) => {
+    router.post("/novolanche", isAdmin, Multer.single('image'), (req, res) => {
 
             let erros = []
             console.log(req.body)

@@ -17,10 +17,9 @@ const myJSDom = new JSDOM
 const cookie = require("cookie-session")
 const $ = require('jquery')(myJSDom.window);
 const passport = require("passport")
-const db = require("./config/db")
+
 const MongoStore = require('connect-mongo');
 require("./config/auth")(passport)
-
 
 
 
@@ -72,6 +71,7 @@ require("./config/auth")(passport)
         app.use(passport.session())
          app.use(flash())
         
+         
        
 
         //middlewares
