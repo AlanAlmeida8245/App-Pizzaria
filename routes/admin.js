@@ -18,6 +18,7 @@ const Contas = mongoose.model("contas")
 const path = require("path")
 const fs = require("fs")
 const {isAdmin} = require("../helpers/isAdmin")
+const uploadImage = require("../services/firebase")
 
 
 const Multer = multer({
@@ -41,11 +42,11 @@ const fileFilter  = (req, file, callback) => {
         res.render("admin/addsnack")
     })
 
-    router.post("/novolanche", isAdmin, Multer.single('image'), (req, res) => {
+    router.post("/novolanche", isAdmin, Multer.single('image'), uploadImage, (req, res) => {
 
             let erros = []
             console.log(req.body)
-            console.log(req.file.path)
+            console.log(req.file)
         
        
             if(!req.body.name || typeof req.body.name == undefined || req.body.name == null)
