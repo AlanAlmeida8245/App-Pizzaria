@@ -10,7 +10,7 @@ admin.initializeApp({
   storageBucket: Bucket
 });
 
-const BucketF = admin.storage().BucketF();
+const BucketF = admin.storage().BucketF("admin.storage(...).BucketF is not a function");
 
 const uploadImage = (req, res, next) => {
     if(!req.file) return next();
