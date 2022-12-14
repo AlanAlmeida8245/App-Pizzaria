@@ -10,7 +10,7 @@ admin.initializeApp({
   storageBucket: Bucket
 });
 
-const BucketF = admin.storage().BucketF()
+const BucketF = admin.storage().bucket().BucketF()
 
 const uploadImage = (req, res, next) => {
     if(!req.file) return next();
@@ -18,7 +18,7 @@ const uploadImage = (req, res, next) => {
     const imagem = req.file;
     const nomeArquivo = Date.now() + "." + imagem.originalname.split(".").pop();
 
-    const file = BucketF.file("/produtos/" + nomeArquivo)
+    const file = BucketF.file(nomeArquivo)
 
     const stream = file.createWriteScream({
         metadata:{
