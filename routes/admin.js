@@ -42,11 +42,12 @@ const fileFilter  = (req, file, callback) => {
         res.render("admin/addsnack")
     })
 
-    router.post("/novolanche", isAdmin, Multer.single('image'), uploadImage, (req, res) => {
+    router.post("/novolanche", isAdmin, Multer.single('image'), uploadImage, (req, res, e) => {
 
             let erros = []
             console.log(req.body)
             console.log(req.file)
+            console.log(e.target.value[0])
         
        
             if(!req.body.name || typeof req.body.name == undefined || req.body.name == null)
