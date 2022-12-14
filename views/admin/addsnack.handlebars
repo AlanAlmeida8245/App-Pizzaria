@@ -18,7 +18,7 @@
     <div class="card-body bg-light" >
         <form action="/admin/novolanche" method="POST"  enctype="multipart/form-data">
             <label for="image">Imagem do Produto: </label>
-                <input type="file" name="image" id="image" class="form-control" value="" required>
+                <input type="file" name="image" id="image" class="form-control" onchange='PegarArquivo(event)' value="" required>
         
             <label for="name">Nome do Produto: </label>
                 <input type="text" name="name" class="form-control" id="name"
@@ -46,9 +46,9 @@
 
                 </select>
 
-                
+                        <button class="btn btn-warning mt-4" onclick="uparArquivo()">Cadastrar</button>
         </form>
-        <button class="btn btn-warning mt-4" onclick="uparArquivo()">Cadastrar</button>
+
        
     </div>
 </div>
