@@ -16,9 +16,9 @@
 
 <div class="card">
     <div class="card-body bg-light" >
-    
+        <form action="/admin/novolanche" method="POST"  enctype="multipart/form-data">
             <label for="image">Imagem do Produto: </label>
-                <input type="file" name="image" id="image" class="form-control" onchange='PegarArquivo(event)' value="" required>
+                <input type="file" name="image" id="image" class="form-control" value="" required>
         
             <label for="name">Nome do Produto: </label>
                 <input type="text" name="name" class="form-control" id="name"
@@ -46,60 +46,10 @@
 
                 </select>
 
-                        <button class="btn btn-warning mt-4" onclick="uparArquivo()">Cadastrar</button>
-      
-
+                <button type="submit" class="btn btn-warning mt-4" >Cadastrar</button>
+        </form>
        
     </div>
 </div>
 
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCxUmQDdH8TgZ6cUByN5nymdC_8H5y0lPU",
-    authDomain: "cardapio-online-a89e3.firebaseapp.com",
-    projectId: "cardapio-online-a89e3",
-    storageBucket: "cardapio-online-a89e3.appspot.com",
-    messagingSenderId: "892422872016",
-    appId: "1:892422872016:web:bb4c3af58821a7e495b7d5",
-    measurementId: "G-QLF5235S3Z"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
-
-    var arquivo;
-    var nomeArquivo;
-
-    function PegarArquivo(e){
-       arquivo = e.target.files[0]
-       nomeArquivo = arquivo.name
-       
-    }
-
-    function uparArquivo(){
-        let localStorage = firebase.storage().ref("produtos/" + Date.now + nomeArquivo)
-        let upar = storageRef.put(arquivo);
-
-        uploadTask.on("state_changed", (snapshot) => {
-            console.log(snapshot)
-        },(error) => {
-            console.log("error: " + error)
-        }, () => {
-                uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-                        console.log("url: ", url)
-                })
-        })
-    }
-
-</script>
