@@ -19,7 +19,8 @@ const $ = require('jquery')(myJSDom.window);
 const passport = require("passport")
 const MongoStore = require('connect-mongo');
 require("./config/auth")(passport)
-
+const imgur = require("imgur")
+const fileUpload = require("express-fileupload")
 
 
 
@@ -42,6 +43,7 @@ require("./config/auth")(passport)
     
     //Configurações
     app.use(cors());
+    app.use(fileUpload())
         //public
         app.use(express.static(path.join(__dirname, "public")))
         app.use("/uploads", express.static("uploads"))
